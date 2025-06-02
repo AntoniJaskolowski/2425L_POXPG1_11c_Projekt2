@@ -8,19 +8,45 @@ public class PlayerController : MonoBehaviour
     public float runSpeed = 7;
     public float jumpForce = 10;
     public Rigidbody2D rb;
+    public Animator anim;
+    public SpriteRenderer spriteRenderer;
 
     public GroundChecker groundChecker;
+    public PlayerStats stats;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        stats = GetComponent<PlayerStats>();
     }
 
     
     void Update()
     {
+        if (stats.isDead) return;
+
         float moveInput = Input.GetAxis("Horizontal");
-        //Debug.Log($"Input pressed: {moveInput}");
+
+        if(moveInput < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else
+        {
+            spriteRenderer.flipX = false;
+        }
+
+        if (moveInput != 0)
+        {
+            anim.SetBool("isWalking", true);
+        }
+        else
+        {
+            anim.SetBool("isWalking", false);
+        }
+
         if (Input.GetKey(KeyCode.LeftShift))
         {
             rb.velocity = new Vector2(moveInput * runSpeed, rb.velocity.y);
