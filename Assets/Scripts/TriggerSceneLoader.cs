@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(BoxCollider2D))]
 public class TriggerSceneLoader : MonoBehaviour
 {
-    public string sceneName = "SampleScene";
+    public string sceneName = "WinScreen";
     private void Start()
     {
         GetComponent<BoxCollider2D>().isTrigger = true;

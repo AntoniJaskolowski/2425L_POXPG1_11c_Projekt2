@@ -2,18 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class PlayerStats : MonoBehaviour
 {
     [SerializeField] private float maxHealth = 100;
     [SerializeField] private float health = 100;
+    public Image healthBarImage;
     private Animator anim;
-
     public bool isDead = false;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        float fillAmount = health / maxHealth;
+        healthBarImage.fillAmount = fillAmount;
     }
 
     public void TakeDamage(float damage)

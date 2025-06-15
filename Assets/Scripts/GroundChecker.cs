@@ -6,10 +6,16 @@ public class GroundChecker : MonoBehaviour
 {
     public bool isGrounded;
     public BoxCollider2D collider;
+    public Animator anim;
+
+
     public void Start()
     {
+        anim = GetComponent<Animator>();
         collider = GetComponent<BoxCollider2D>();
     }
+
+
     void Update()
     {
         //TODO Unfinished

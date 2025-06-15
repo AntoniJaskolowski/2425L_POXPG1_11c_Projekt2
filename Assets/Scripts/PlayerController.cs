@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     public Animator anim;
     public SpriteRenderer spriteRenderer;
-
     public GroundChecker groundChecker;
     public PlayerStats stats;
 
@@ -36,6 +35,14 @@ public class PlayerController : MonoBehaviour
         else
         {
             spriteRenderer.flipX = false;
+        }
+
+        if (groundChecker.isGrounded == true)
+        {
+            anim.SetBool("isGoon", true);
+        }
+        else {
+            anim.SetBool("isGoon", false);
         }
 
         if (moveInput != 0)
